@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    width: 100%;
+}
+
+.header-fish {
+    background-color: rgb(255, 0, 0);
+    width: 100%;
+}
