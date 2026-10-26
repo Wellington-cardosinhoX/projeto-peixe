@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TypeController extends Controller
 {
@@ -12,7 +13,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::all();
+        $types = Type::withCount('fish')->orderBy('name')->get();
         return view('types.index', compact('types'));
     }
 
@@ -29,8 +30,10 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['name' => 'required|string|max:255']); 
-        Type::create($request->all());
+        $data = $request->validate(['name' => 'required|string|max:255']);
+        $request->merge(['name' => mb_strtolower(trim($data['name']))]);
+        $data = $request->validate(['name' => 'required|string|unique:types|max:255']);
+        Type::create($data);
         return redirect()->route('types.index')->with('success', 'Tipo criado com sucesso!');
     }
 
@@ -56,8 +59,10 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        $request->validate(['name' => 'required|string|max:255']); 
-        $type->update($request->all());
+        $data = $request->validate(['name' => 'required|string|max:255']);
+        $request->merge(['name' => mb_strtolower(trim($data['name']))]);
+        $data = $request->validate(['name' => ['required', 'string', 'max:255', Rule::unique('types')->ignore($type)]]);
+        $type->update($data);
         return redirect()->route('types.index')->with('success', 'Tipo atualizado com sucesso!');
     }
 
@@ -66,6 +71,10 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
+        if ($type->fish()->exists()) {
+            return redirect()->route('types.index')->with('error', 'Esta categoria possui peixes. Altere a categoria desses peixes antes de excluir.');
+        }
+
         $type->delete();
         return redirect()->route('types.index')->with('success', 'Tipo excluído com sucesso!');
     }

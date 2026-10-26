@@ -12,7 +12,7 @@
 <body class="font-sans antialiased">
     <main class="auth-shell">
         <section class="auth-ocean" aria-label="Aqua, gestão de peixes">
-            <a href="{{ url('/') }}" class="auth-brand"><span aria-hidden="true">≈</span> aqua<span class="auth-brand-dot">.</span></a>
+            <a href="{{ url('/') }}" class="auth-brand"> aqua</a>
             <div class="auth-story">
                 <span class="auth-eyebrow">UM NOVO OLHAR PARA O SEU AQUÁRIO</span>
                 <h1>Um universo de peixes.<br><em>Tudo no seu lugar.</em></h1>

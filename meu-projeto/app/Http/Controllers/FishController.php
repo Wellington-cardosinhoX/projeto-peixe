@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fish;
 use Illuminate\Http\Request;
+use App\Models\Type;
 
 class FishController extends Controller
 {
@@ -12,7 +13,10 @@ class FishController extends Controller
      */
     public function index()
     {
-        //
+        $fish = Fish::with('type')->get();
+        $types = Type::all();
+
+        return view('dashboard', compact('fish', 'types'));
     }
 
     /**
@@ -20,7 +24,7 @@ class FishController extends Controller
      */
     public function create()
     {
-        //
+        return view('fish.create');
     }
 
     /**
@@ -28,8 +32,12 @@ class FishController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $dados = $request->validate(['name' => 'required|string|max:255', 'color' => 'required|string|max:255', 'type_id' => 'required|exists:types,id']);
+
+        Fish::create($dados);
+
+        return redirect()->to(route('dashboard') . '#peixes')->with('success', 'Peixes salvos');
+    }   
 
     /**
      * Display the specified resource.
@@ -52,7 +60,10 @@ class FishController extends Controller
      */
     public function update(Request $request, Fish $fish)
     {
-        //
+        $dadosAtualizados = $request->validate(['name' => 'required|string|max:255', 'color' => 'required|string|max:255', 'type_id' => 'required|exists:types,id']);
+        $fish->update($dadosAtualizados);
+
+        return redirect()->to(route('dashboard'))->with('success', 'Peixe atualizado');
     }
 
     /**
@@ -60,6 +71,8 @@ class FishController extends Controller
      */
     public function destroy(Fish $fish)
     {
-        //
+        $fish->delete();
+
+        return redirect('/dashboard')->with('success', 'Chirp deleted!');
     }
 }

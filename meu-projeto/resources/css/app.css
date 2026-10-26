@@ -98,6 +98,13 @@ body {
 .aqua-table th { padding: 15px 32px; background: #f8faf7; border-block: 1px solid #e8eee6; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #7a8d83; font-weight: 600; }
 .aqua-table td { padding: 20px 32px; border-bottom: 1px solid #edf0eb; font-size: 13px; color: #6f8279; }
 .aqua-table strong { color: #284c45; font-weight: 500; }
+.aqua-actions-heading { text-align: center; }
+.aqua-table-actions { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.aqua-action-button { padding: 7px 10px; border: 1px solid transparent; border-radius: 7px; font-size: 11px; font-weight: 600; transition: background .2s, border-color .2s, color .2s; }
+.aqua-action-edit { border-color: #d4e4dc; color: #267764; background: #f5f9f6; }
+.aqua-action-edit:hover { border-color: #a9cbbc; background: #eaf3ed; }
+.aqua-action-delete { border-color: #ecd9d7; color: #a54840; background: #fff8f7; }
+.aqua-action-delete:hover { border-color: #ddb8b4; background: #fbeceb; }
 .aqua-fish-avatar { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: #eaf2ec; color: #348875; font-size: 10px; margin-right: 14px; }
 .aqua-color { display: inline-block; height: 8px; width: 8px; border-radius: 50%; margin-right: 9px; }
 .aqua-color-blue { background: #5b99b9; }.aqua-color-orange { background: #dd9561; }.aqua-color-gold { background: #d4b45c; }
@@ -115,6 +122,15 @@ body {
 .aqua-form-aside h3 { font-size: 17px; font-weight: 600; margin: 22px 0 12px; }
 .aqua-form-aside p { font-size: 13px; color: #7c8f80; line-height: 1.9; }
 .aqua-form-aside a { display: inline-block; margin-top: 26px; color: #267764; font-size: 12px; line-height: 1.7; }
+.aqua-modal-form { padding: 30px; gap: 22px; }
+.aqua-modal-heading h2 { margin: 9px 0 7px; color: #173c43; font-size: 23px; font-weight: 600; letter-spacing: -.5px; }
+.aqua-modal-heading p { color: #7c8d87; font-size: 13px; line-height: 1.7; }
+.aqua-modal-actions { display: flex; justify-content: flex-end; gap: 12px; padding-top: 22px; border-top: 1px solid #e9eee7; }
+.aqua-button-danger { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 8px; background: #a54840; color: #fff; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.aqua-button-danger:hover { background: #86372f; }
+.aqua-delete-modal { display: grid; text-align: center; }
+.aqua-delete-symbol { display: grid; place-items: center; width: 52px; height: 52px; margin: 0 auto; border-radius: 50%; background: #fbeceb; color: #a54840; font-size: 24px; font-weight: 700; }
+.aqua-delete-modal .aqua-modal-actions { justify-content: center; }
 .aqua-app-footer { max-width: 1180px; margin: 0 auto; padding: 22px 0; border-top: 1px solid #dfe6dc; display: flex; justify-content: space-between; color: #92a091; font-size: 11px; }
 .aqua-page-header { max-width: 1180px; margin: 30px auto 0; }
 .aqua-app a:focus-visible, .aqua-app button:focus-visible { outline: 3px solid #56b6a3; outline-offset: 4px; }
